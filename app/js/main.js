@@ -15,7 +15,6 @@ function getWeather() {
     $.getJSON(apiCall, weatherCallback);
 
     function weatherCallback(weatherData) {
-        console.log('drin');
         let cityName = weatherData.name;
         let country = weatherData.sys.country;
         let temperature = weatherData.main.temp;
