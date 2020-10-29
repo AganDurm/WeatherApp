@@ -4,7 +4,7 @@ function getWeather() {
 
     weatherResponseElement.html('');
     let cityName = $('#cityName').val();
-    const TOKEN = "YOUR_TOKEN_HERE";
+    const TOKEN = process.env.YOUR_TOKEN;
     let apiCall = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + TOKEN;
     $.getJSON(apiCall, weatherCallback);
 
