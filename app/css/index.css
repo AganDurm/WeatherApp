@@ -1,0 +1,92 @@
+* {
+    outline: none;
+    cursor: pointer;
+    border: none;
+    font-weight: 700;
+    font-family: "Apple LiGothic", "Marker Felt", sans-serif;
+    overflow: hidden;
+}
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, .92);
+}
+.content {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+}
+.content #checkForm h1 {
+    color: #fff;
+}
+.content #checkForm {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+}
+.content #checkForm .lottie {
+    margin-top: -40px;
+}
+.content #checkForm input {
+    font-size: 20px;
+    background: transparent;
+    border: #fff solid 1px;
+    border-radius: 5px;
+    margin-top: 20px;
+    color: #fff;
+    text-align: center;
+    padding: 10px 15px;
+}
+.content #checkForm button {
+    padding: 10px 20px;
+    font-size: 20px;
+    margin-top: 20px;
+    background: rgba(22, 22, 22, 0.92);
+    color: white;
+    border: #fff solid 1px;
+    border-radius: 5px;
+    -webkit-box-shadow: 9px 10px 300px 59px rgba(0,0,0,0.28);
+    -moz-box-shadow: 9px 10px 300px 59px rgba(0,0,0,0.28);
+    box-shadow: 9px 10px 300px 59px rgba(0,0,0,0.28);
+    transition: 500ms ease-in-out all;
+}
+.content #checkForm button:hover {
+    transform: scale(1.04);
+}
+
+
+.weatherWrapper {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
+    width: 100%;
+    height: 100%;
+}
+.weatherWrapper .weatherResponse {
+    text-align: center;
+    color: #fff;
+    font-size: 15px;
+    margin-top: 20px;
+}
+.weatherWrapper .weather {
+    background-size: 80%;
+    background-repeat: no-repeat;
+    background-position: center;
+    display: none;
+    margin-top: -40px;
+}
+.weatherWrapper .temp {
+    font-size: 100px;
+    color: #fff;
+    display: none;
+    text-align: center;
+    margin-top: 30px;
+}
