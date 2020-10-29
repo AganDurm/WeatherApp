@@ -12,5 +12,8 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "aws-sdk": "^2.782.0"
   }
 }
