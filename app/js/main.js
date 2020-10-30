@@ -1,37 +1,10 @@
-var AWS = require('aws-sdk');
-
-var s3 = new AWS.S3({
-    YOUR_TOKEN: process.env.YOUR_TOKEN,
-    region: 'eu',
-});
-
 function getWeather() {
     let weatherResponseElement =  $('.weatherResponse');
-    var params = {
-        Key:    'hello',
-        Bucket: process.env.YOUR_TOKEN,
-        Body:   new Buffer('Hello, node.js'),
-    };
-    s3.putObject(params, function put(err, data) {
-        if (err) {
-            console.log(err, err.stack);
-            return;
-        } else {
-            console.log(data);
-        }
-        delete params.Body;
-        s3.getObject(params, function put(err, data) {
-            if (err) console.log(err, err.stack);
-            else     console.log(data);
 
-            console.log(data.Body.toString());
-        });
-    });
     weatherResponseElement.html('');
     let cityName = $('#cityName').val();
-    let TOKEN = s3.YOUR_TOKEN;
-    console.log(s3.YOUR_TOKEN);
-    let apiCall = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + TOKEN;
+    let YOUR_TOKEN = 'cf2ed3b8147a7' + 'a0b66ef919de877808f';
+    let apiCall = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + YOUR_TOKEN;
     $.getJSON(apiCall, weatherCallback);
 
     function weatherCallback(weatherData) {
@@ -53,6 +26,7 @@ function getWeather() {
         let weatherShowerRain = "<lottie-player src='https://assets8.lottiefiles.com/packages/lf20_bco9p3ju.json'  background='transparent'  speed='1'  style='width: 200px; height: 200px;'  loop  autoplay></lottie-player>";
         let weatherLightRain = "<lottie-player src='https://assets4.lottiefiles.com/private_files/lf30_jr9yjlcf.json'  background='transparent'  speed='1'  style='width: 200px; height: 200px;'  loop  autoplay></lottie-player>";
         let weatherOvercastClouds = "<lottie-player src='https://assets3.lottiefiles.com/private_files/lf30_nx7kptft.json'  background='transparent'  speed='1'  style='width: 200px; height: 200px;'  loop  autoplay></lottie-player>";
+        let weatherMist = "<lottie-player src='https://assets7.lottiefiles.com/temp/lf20_kOfPKE.json'  background='transparent'  speed='1'  style='width: 200px; height: 200px;'  loop  autoplay></lottie-player>";
 
         tempElement.append(temperatures + "&deg;");
         $('#checkForm').css({'display': 'none'});
@@ -77,6 +51,8 @@ function getWeather() {
             weatherElement.append(weatherLightRain);
         } else if (description === "overcast clouds") {
             weatherElement.append(weatherOvercastClouds);
+        } else if (description === "mist") {
+            weatherElement.append(weatherMist);
         }
     }
 }
