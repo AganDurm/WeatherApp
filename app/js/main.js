@@ -1,16 +1,15 @@
 const aws = require('aws-sdk');
 
-let s3 = new aws.S3({
-    YOUR_TOKEN: process.env.YOUR_TOKEN
-});
-
 function getWeather() {
     let weatherResponseElement =  $('.weatherResponse');
-
+    let s3 = new aws.S3({
+        YOUR_TOKEN: process.env.YOUR_TOKEN
+    });
 
     weatherResponseElement.html('');
     let cityName = $('#cityName').val();
-    const TOKEN = s3.YOUR_TOKEN;
+    let TOKEN = s3.YOUR_TOKEN;
+    console.log(s3.YOUR_TOKEN);
     let apiCall = 'http://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + TOKEN;
     $.getJSON(apiCall, weatherCallback);
 
