@@ -1,11 +1,32 @@
-const aws = require('aws-sdk');
+var AWS = require('aws-sdk');
+
+var s3 = new AWS.S3({
+    YOUR_TOKEN: process.env.YOUR_TOKEN,
+    region: 'eu',
+});
 
 function getWeather() {
     let weatherResponseElement =  $('.weatherResponse');
-    let s3 = new aws.S3({
-        YOUR_TOKEN: process.env.YOUR_TOKEN
-    });
+    var params = {
+        Key:    'hello',
+        Bucket: process.env.YOUR_TOKEN,
+        Body:   new Buffer('Hello, node.js'),
+    };
+    s3.putObject(params, function put(err, data) {
+        if (err) {
+            console.log(err, err.stack);
+            return;
+        } else {
+            console.log(data);
+        }
+        delete params.Body;
+        s3.getObject(params, function put(err, data) {
+            if (err) console.log(err, err.stack);
+            else     console.log(data);
 
+            console.log(data.Body.toString());
+        });
+    });
     weatherResponseElement.html('');
     let cityName = $('#cityName').val();
     let TOKEN = s3.YOUR_TOKEN;
