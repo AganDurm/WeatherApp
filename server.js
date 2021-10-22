@@ -4,4 +4,4 @@ const port = process.env.PORT || 8080;
 
 app.use(express.static(__dirname + '/app'));
 app.listen(port);
-console.log('Server listening!');
+console.log(`Server listening! http://localhost:${port}`);

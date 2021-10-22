@@ -1,7 +1,9 @@
-function getWeather() {
-    let weatherResponseElement =  $('.weatherResponse');
+let weatherResponseElement =  $('.weatherResponse');
+let weatherElement = $('.weather');
+let tempElement = $('.temp');
 
-    weatherResponseElement.html('');
+function getWeather() {
+    clear();
     let cityName = $('#cityName').val();
     let YOUR_TOKEN = 'cf2ed3b8147a7' + 'a0b66ef919de877808f';
     let apiCall = 'https://api.openweathermap.org/data/2.5/weather?q=' + cityName + '&appid=' + YOUR_TOKEN;
@@ -15,8 +17,6 @@ function getWeather() {
         let wind = weatherData.wind.speed;
         let temperaturesFull = temperature-273.15;
         let temperatures = Math.round(temperaturesFull, 2);
-        let weatherElement =  $('.weather');
-        let tempElement =  $('.temp');
 
         let weatherClearSky = "<lottie-player src='https://assets2.lottiefiles.com/private_files/lf30_moaf5wp5.json'  background='transparent'  speed='1'  style='width: 200px; height: 200px;'  loop  autoplay></lottie-player>";
         let weatherBrokenClouds = "<lottie-player src='https://assets8.lottiefiles.com/private_files/lf30_ykkzuozu.json'  background='transparent'  speed='1'  style='width: 200px; height: 200px;'  loop  autoplay></lottie-player>";
@@ -34,6 +34,7 @@ function getWeather() {
         tempElement.css({'display': 'block'});
 
 
+        weatherResponseElement.html('');
         weatherResponseElement.append("The weather in " + cityName + " " + "("+ country + ")" + " is currently " + description + " and the " + "windspeed is " + wind + "km/h. ");
         if(description === "clear sky") {
             weatherElement.append(weatherClearSky);
@@ -55,4 +56,13 @@ function getWeather() {
             weatherElement.append(weatherMist);
         }
     }
+}
+function clear() {
+    weatherResponseElement.html('');
+}
+function reset() {
+    weatherResponseElement.html('');
+    $('#checkForm').css({'display': 'flex'});
+    weatherElement.empty();
+    tempElement.empty();
 }
